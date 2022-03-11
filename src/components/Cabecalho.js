@@ -4,9 +4,9 @@ import { Container, Titulo } from "../styleGlobal";
 import paleta from "../paleta.json";
 import icone from "../assets/icones/icone-carrinho.svg";
 import ContextoProdutos from "../contextos/contextoProdutos";
+import { Link } from "react-router-dom";
 
 const Cabecalho = () => {
-
   const contexto = useContext(ContextoProdutos);
 
   return (
@@ -14,28 +14,28 @@ const Cabecalho = () => {
       <Titulo
         style={{
           color: `${paleta.cores.vermelho}`,
+          textDecoration: "none",
+        }}
+        onClick={() => {
+          window.location.reload();
         }}
       >
         Acme inc.
       </Titulo>
       <StyledDivCarrinho>
-        <StyledContadorItems>
-          {contexto.qtdItems}
-        </StyledContadorItems>
-        <img
-          src={icone}
-          alt="Icone carrinho de compras"
-          style={{
-            padding: "16px",
-            borderRadius: "20px",
-            backgroundColor: "white",
-          }}
-          onClick={(e) => {
-            e.preventDefault();
-
-            contexto.exibirCarrinho();
-          }}
-        />
+        <StyledContadorItems>{contexto.qtdItems}</StyledContadorItems>
+        <Link to="/carrinho">
+          <img
+            src={icone}
+            alt="Icone carrinho de compras"
+            style={{
+              padding: "16px",
+              borderRadius: "20px",
+              backgroundColor: "white",
+              zIndex: "999px",
+            }}
+          />
+        </Link>
       </StyledDivCarrinho>
     </StyledCabecalho>
   );

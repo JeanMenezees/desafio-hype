@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Cabecalho from "./components/Cabecalho";
 import BarraDeFiltro from "./components/PaginaInicial/BarraDeFiltros";
 import ListaProdutos from "./components/PaginaInicial/ListaDeProdutos";
 import ContextoProdutos from "../src/contextos/contextoProdutos.js";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
@@ -22,7 +23,7 @@ function App() {
           filtrar: filtrarFav,
           setFiltrar: setFiltrarFav,
           nome: nome,
-          setNome: setNome
+          setNome: setNome,
         }}
       >
         <Cabecalho />
