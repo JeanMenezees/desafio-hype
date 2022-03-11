@@ -5,7 +5,6 @@ import { Container } from "../../styleGlobal";
 import { construirLista } from "../helpers/random.js";
 import regras from "../../regras.json";
 import ContextoProdutos from "../../contextos/contextoProdutos";
-import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 
 function reducer(state, action) {
   switch (action.type) {
