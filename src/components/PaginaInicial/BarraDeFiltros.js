@@ -26,6 +26,9 @@ const BarraFiltros = () => {
             width: "50%",
             minWidth: "150px",
           }}
+          onChange={(e) => {
+            contexto.setNome(e.target.value)
+          }}
         />
       </BarraPesquisa>
     </StyledBarraFiltros>

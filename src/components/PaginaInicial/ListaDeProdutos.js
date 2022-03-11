@@ -31,14 +31,18 @@ const ListaProdutos = (props) => {
     }
     if (carregamento === false && carregamentoFoto === false) {
       return listaNomes.map((nome) => {
-        return (
-          <Produto
-            key={nome.verbo}
-            verbo={nome.verbo}
-            adjetivo={nome.adjetivo}
-            url={fotos[0]}
-          />
-        );
+        if(nome.verbo.includes(contexto.nome)){
+          {
+            return (
+              <Produto
+                key={nome.verbo}
+                verbo={nome.verbo}
+                adjetivo={nome.adjetivo}
+                url={fotos[0]}
+              />
+            );
+          }
+        }
       });
     }
   }

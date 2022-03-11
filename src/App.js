@@ -7,7 +7,7 @@ import ContextoProdutos from "../src/contextos/contextoProdutos.js";
 function App() {
   const [carrinho, setCarrinho] = useState([]);
   const [filtrarFav, setFiltrarFav] = useState(false);
-  const [nome, setNome] = useState();
+  const [nome, setNome] = useState(" ");
 
   function cololocarCarrinho(produto) {
     setCarrinho([...carrinho, produto]);
@@ -20,7 +20,9 @@ function App() {
           colocarCarrinho: cololocarCarrinho,
           qtdItems: carrinho.length,
           filtrar: filtrarFav,
-          setFiltrar: setFiltrarFav
+          setFiltrar: setFiltrarFav,
+          nome: nome,
+          setNome: setNome
         }}
       >
         <Cabecalho />
