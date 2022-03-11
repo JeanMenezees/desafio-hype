@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Cabecalho from "./components/Cabecalho";
+import BarraDeFiltro from "./components/PaginaInicial/BarraDeFiltros";
+import ListaProdutos from "./components/PaginaInicial/ListaDeProdutos";
+import ContextoProdutos from "../src/contextos/contextoProdutos.js";
 
 function App() {
+  const [carrinho, setCarrinho] = useState([]);
+  const [filtrarFav, setFiltrarFav] = useState(false);
+  const [nome, setNome] = useState();
+
+  function cololocarCarrinho(produto) {
+    setCarrinho([...carrinho, produto]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ContextoProdutos.Provider
+        value={{
+          colocarCarrinho: cololocarCarrinho,
+          qtdItems: carrinho.length,
+          filtrar: filtrarFav,
+          setFiltrar: setFiltrarFav
+        }}
+      >
+        <Cabecalho />
+        <BarraDeFiltro />
+        <ListaProdutos />
+      </ContextoProdutos.Provider>
+    </>
   );
 }
 
