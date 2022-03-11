@@ -31,7 +31,12 @@ const ListaProdutos = (props) => {
     }
     if (carregamento === false && carregamentoFoto === false) {
       return listaNomes.map((nome) => {
-        if(nome.verbo.includes(contexto.nome)){
+        if (
+          nome.verbo.includes(contexto.nome) ||
+          nome.verbo === contexto.nome ||
+          nome.adjetivo.includes(contexto.nome) ||
+          nome.adjetivo === contexto.nome
+        ) {
           {
             return (
               <Produto

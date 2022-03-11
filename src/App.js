@@ -7,7 +7,7 @@ import ContextoProdutos from "../src/contextos/contextoProdutos.js";
 function App() {
   const [carrinho, setCarrinho] = useState([]);
   const [filtrarFav, setFiltrarFav] = useState(false);
-  const [nome, setNome] = useState(" ");
+  const [nome, setNome] = useState("");
 
   function cololocarCarrinho(produto) {
     setCarrinho([...carrinho, produto]);

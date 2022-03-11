@@ -30,6 +30,11 @@ const Cabecalho = () => {
             borderRadius: "20px",
             backgroundColor: "white",
           }}
+          onClick={(e) => {
+            e.preventDefault();
+
+            contexto.exibirCarrinho();
+          }}
         />
       </StyledDivCarrinho>
     </StyledCabecalho>
