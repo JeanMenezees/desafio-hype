@@ -48,6 +48,11 @@ const StyledCabecalho = styled(Container)`
   justify-content: space-between;
 
   background-color: ${paleta.cores.branco};
+
+  position: sticky;
+  top: 0;
+
+  z-index: 1;
 `;
 
 const StyledDivCarrinho = styled.div`
