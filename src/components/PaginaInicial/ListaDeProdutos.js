@@ -31,10 +31,10 @@ const ListaProdutos = (props) => {
     if (carregamento === false && carregamentoFoto === false) {
       return listaNomes.map((nome) => {
         if (
-          nome.verbo.includes(contexto.nome) ||
-          nome.verbo === contexto.nome ||
-          nome.adjetivo.includes(contexto.nome) ||
-          nome.adjetivo === contexto.nome
+          nome.verbo.toUpperCase().includes(contexto.nome.toUpperCase()) ||
+          nome.verbo.toUpperCase() === contexto.nome.toUpperCase() ||
+          nome.adjetivo.toUpperCase().includes(contexto.nome.toUpperCase()) ||
+          nome.adjetivo.toUpperCase() === contexto.nome.toUpperCase()
         ) {
           {
             return (

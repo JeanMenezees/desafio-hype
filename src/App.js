@@ -14,6 +14,15 @@ function App() {
     setCarrinho([...carrinho, produto]);
   }
 
+  function deveFiltrarHandler() {
+    if(filtrarFav === true) {
+      setFiltrarFav(false);
+    }
+    else{
+      setFiltrarFav(true);
+    }
+  }
+
   return (
     <>
       <ContextoProdutos.Provider
@@ -21,7 +30,7 @@ function App() {
           colocarCarrinho: cololocarCarrinho,
           qtdItems: carrinho.length,
           filtrar: filtrarFav,
-          setFiltrar: setFiltrarFav,
+          setFiltrar: deveFiltrarHandler,
           nome: nome,
           setNome: setNome,
         }}

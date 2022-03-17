@@ -16,7 +16,6 @@ function reducer(state, action) {
   }
 }
 
-
 const Produto = (props) => {
   const animacaoConfig = {
     animationData: animacao,
