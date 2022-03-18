@@ -75,6 +75,8 @@ const StyledBotaoFavoritos = styled(Botao)`
     border-bottom: 3px solid ${paleta.cores.preto};
   }
 
+  align-items: center;
+
   transition: 0.2s;
 
   cursor: pointer;

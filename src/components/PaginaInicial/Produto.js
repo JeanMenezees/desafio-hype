@@ -93,6 +93,7 @@ const Produto = (props) => {
               nome: props.dados.nome,
               descricao: props.dados.descricao,
               preco: props.dados.preco,
+              foto: props.dados.foto
             });
           }}
         >
@@ -133,19 +134,18 @@ const StyledDivProduto = styled.div`
 
   margin: 16px auto;
 
-  padding: 16px;
-
   transition: 1s;
 
   border-radius: 16px;
 
-  max-height: 350px;
+  max-height: 400px;
 
   .foto{
-    width: 200px;
+    width: 100%;
     height: 200px;
 
-    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     
    background-image: url(${(props) => props.url});
    backgroundSize: "cover",
