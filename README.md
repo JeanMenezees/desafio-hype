@@ -14,8 +14,10 @@ Desafio proposto pela Hype 🏢 para simular um web app de um e-commerce para no
 
 ## Screenshots
 
-![fluxo1](./public/screenshots/Fluxo1.png)
-![fluxo3](./public/screenshots/Fluxo3.png)
+<div align="center">
+  ![fluxo1](./public/screenshots/Fluxo1.png)
+  ![fluxo3](./public/screenshots/Fluxo3.png)
+</div>
 
 É possível favoritar e filtrar seus favoritos
 
