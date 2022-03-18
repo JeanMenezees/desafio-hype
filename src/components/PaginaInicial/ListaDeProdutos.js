@@ -3,38 +3,22 @@ import Produto from "./Produto";
 import styled from "styled-components";
 import { Container } from "../../styleGlobal";
 import ContextoProdutos from "../../contextos/contextoProdutos";
-import { v4 as uuidv4 } from "uuid";
-
-function reducer(state, action) {
-  switch (action.type) {
-    case "construir":
-      return { carregando: false };
-  }
-}
 
 const ListaProdutos = (props) => {
-  //Vou receber os produtos
-  const [{ carregando }, dispatch] = useReducer(reducer, {
-    carregando: true,
-  });
-
-  const [carregandoFoto, setCarregandoFoto] = useState(true);
-  const [fotos, setFotos] = useState({});
-
   const contexto = useContext(ContextoProdutos);
 
-  function verficarCarregamento(carregamento, carregamentoFoto) {
-    if (carregamento === true && carregamentoFoto === true) {
+  function verficarCarregamento() {
+    if (contexto.carregando === true) {
       return "";
     }
-    if (carregamento === false && carregamentoFoto === false) {
+    if (contexto.carregando === false) {
       return props.produtos.map((item, index) => {
         if (item.nome.toUpperCase().includes(contexto.nome.toUpperCase())) {
           if (contexto.deveFiltrar && item.favoritado === true) {
             return (
               <Produto
                 key={index}
-                dados={{ ...item, foto: fotos[3].download_url }}
+                dados={{ ...item }}
               />
             );
           }
@@ -42,7 +26,7 @@ const ListaProdutos = (props) => {
             return (
               <Produto
                 key={index}
-                dados={{ ...item, foto: fotos[3].download_url }}
+                dados={{ ...item }}
               />
             );
           }
@@ -51,26 +35,9 @@ const ListaProdutos = (props) => {
     }
   }
 
-  useEffect(() => {
-    fetch("https://picsum.photos/v2/list?page=2&limit=50")
-      .then(async (resposta) => {
-        var data = await resposta.json();
-
-        return data;
-      })
-      .then((data) => {
-        setFotos(data);
-      })
-      .then(() => {
-        setCarregandoFoto(false);
-      });
-
-    dispatch({ type: "construir" });
-  }, []);
-
   return (
     <StyledListaProdutos>
-      {verficarCarregamento(carregando, carregandoFoto)}
+      {verficarCarregamento()}
     </StyledListaProdutos>
   );
 };

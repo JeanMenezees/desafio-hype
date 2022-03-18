@@ -10,45 +10,54 @@ function App() {
   const [carrinho, setCarrinho] = useState([]);
   const [filtrarFav, setFiltrarFav] = useState(false);
   const [nome, setNome] = useState("");
-  const [produtos, setProdutos] = useState(construirLista());
+  const [produtos, setProdutos] = useState([]);
+  const [carregando, setCarregando] = useState(true);
 
   const contexto = useContext(ContextoCarrinho);
 
   useEffect(() => {
     contexto.setCarrinho(carrinho);
-  }, [carrinho])
+  }, [carrinho]);
+
+  useEffect(() => {
+    construirLista()
+      .then((produtos) => {
+        console.log(produtos);
+        setProdutos(produtos);
+      })
+      .then(() => setCarregando(false));
+  }, []);
 
   function cololocarCarrinho(produto) {
     setCarrinho([...carrinho, produto]);
   }
 
   function deveFiltrarHandler() {
-    if(filtrarFav === true) {
+    if (filtrarFav === true) {
       setFiltrarFav(false);
-    }
-    else{
+    } else {
       setFiltrarFav(true);
     }
   }
 
   function favoritarHandler(verbo) {
-    var produto = produtos.filter(item => item.verbo === verbo)[0];
+    var produto = produtos.filter((item) => item.verbo === verbo)[0];
     var posicaoProduto = produtos.indexOf(produto);
 
     setProdutos((antigos) => {
       antigos[posicaoProduto].favoritado = true;
-      
+
       return antigos;
     });
   }
 
   function desfavoritarHandler(verbo) {
-    var produto = produtos.filter(item => item.verbo === verbo)[0];
+    var produto = produtos.filter((item) => item.verbo === verbo)[0];
     var posicaoProduto = produtos.indexOf(produto);
 
     setProdutos((antigos) => {
       antigos[posicaoProduto].favoritado = false;
-      
+
       return antigos;
     });
   }
@@ -64,12 +73,13 @@ function App() {
           deveFiltrar: filtrarFav,
           setNome: setNome,
           favoritar: favoritarHandler,
-          desfavoritar: desfavoritarHandler
+          desfavoritar: desfavoritarHandler,
+          carregando: carregando,
         }}
       >
         <Cabecalho />
         <BarraDeFiltro />
-        <ListaProdutos produtos={produtos}/>
+        <ListaProdutos produtos={produtos} />
       </ContextoProdutos.Provider>
     </>
   );
