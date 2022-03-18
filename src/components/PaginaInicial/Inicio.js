@@ -22,7 +22,6 @@ function App() {
   useEffect(() => {
     construirLista()
       .then((produtos) => {
-        console.log(produtos);
         setProdutos(produtos);
       })
       .then(() => setCarregando(false));
