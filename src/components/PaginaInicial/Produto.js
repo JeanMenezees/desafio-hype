@@ -28,7 +28,7 @@ const Produto = (props) => {
     autoplay: false,
   };
 
-  var { View, playSegments } = useLottie(animacaoConfig);
+  var { View, playSegments, destroy } = useLottie(animacaoConfig);
 
   const contexto = useContext(ContextoProdutos);
 
@@ -38,9 +38,11 @@ const Produto = (props) => {
 
   useEffect(() => {
     if (favoritado) {
-      playSegments([109, 109], true);
+      playSegments([40, 109], true);
+      console.log("sou favoritado")
     } else {
-      playSegments([0, 0], true);
+      playSegments([40, 41], true);
+      console.log("nao sou favoritado")
     }
   }, []);
 
