@@ -16,8 +16,8 @@ const Carrinho = (props) => {
         Seu carrinho
       </h1>
       <StyledListaCarrinho>
-        {props.carrinho.map((produto) => (
-          <Produto dados={{ ...produto }} carrinho />
+        {props.carrinho.map((produto, index) => (
+          <Produto key={index} dados={{ ...produto }} carrinho />
         ))}
       </StyledListaCarrinho>
     </>
