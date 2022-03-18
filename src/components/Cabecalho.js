@@ -55,6 +55,12 @@ const StyledCabecalho = styled(Container)`
   top: 0;
 
   z-index: 1;
+
+  @media(min-width: 1000px){
+    height: 100px;
+
+    padding: 2%;
+  }
 `;
 
 const StyledDivCarrinho = styled.div`

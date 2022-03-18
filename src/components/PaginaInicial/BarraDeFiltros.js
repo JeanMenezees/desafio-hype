@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Container, Botao, Input } from "../../styleGlobal";
 import paleta from "../../paleta.json";
 import ContextoProdutos from "../../contextos/contextoProdutos";
+import Estrela_sem from "../../assets/icones/Estrela_sem.svg";
+import Estrela_com from "../../assets/icones/Estrela_com.svg";
 
 const BarraFiltros = () => {
-
   const contexto = useContext(ContextoProdutos);
+
+  const [selecionado, setSelecionado] = useState(false);
 
   return (
     <StyledBarraFiltros>
@@ -15,8 +18,18 @@ const BarraFiltros = () => {
           e.preventDefault();
 
           contexto.setFiltrar(true);
+
+          setSelecionado((antigo) => !antigo);
         }}
-      >Favoritos</StyledBotaoFavoritos>
+        selecionado={selecionado}
+      >
+        <img
+          className="icone__sem__fundo"
+          src={selecionado ? Estrela_com : Estrela_sem}
+          alt="icone de estrela"
+        />
+        Favoritos
+      </StyledBotaoFavoritos>
       <BarraPesquisa>
         <Input
           type="text"
@@ -27,7 +40,7 @@ const BarraFiltros = () => {
             minWidth: "150px",
           }}
           onChange={(e) => {
-            contexto.setNome(e.target.value)
+            contexto.setNome(e.target.value);
           }}
         />
       </BarraPesquisa>
@@ -49,6 +62,12 @@ const StyledBarraFiltros = styled(Container)`
   background-color: ${paleta.cores.branco};
 
   z-index: 999;
+
+  @media (min-width: 1000px) {
+    top: calc(100px + 2%);
+
+    padding: 2%;
+  }
 `;
 
 const StyledBotaoFavoritos = styled(Botao)`
@@ -60,13 +79,23 @@ const StyledBotaoFavoritos = styled(Botao)`
 
   cursor: pointer;
 
-  font-weight: bold;
+  font-weight: ${(props) => (props.selecionado ? "bold" : "")};
   color: ${paleta.cores.preto}
 
   text-align: center;
 
   width: 30%;
   max-width: 300px
+
+  position: relative;
+
+  border-bottom: ${props => props.selecionado ? `3px solid ${paleta.cores.preto}` : ""};
+
+  .icone__sem__fundo{
+    position: absolute;
+
+    left: 2%;
+  }
 `;
 
 const BarraPesquisa = styled.div`
