@@ -4,12 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Carrinho from './components/Carrinho/carrinho';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
         <Route path="/" element={<App />}/>
+        <Route path="/carrinho" element={<Carrinho />}/>
       </Routes>
     </Router>
   </React.StrictMode>,

@@ -30,12 +30,22 @@ const ListaProdutos = (props) => {
     if (carregamento === false && carregamentoFoto === false) {
       return props.produtos.map((item, index) => {
         if (item.nome.toUpperCase().includes(contexto.nome.toUpperCase())) {
-          return (
-            <Produto
-              key={index}
-              dados={{ ...item, foto: fotos[3].download_url }}
-            />
-          );
+          if (contexto.deveFiltrar && item.favoritado === true) {
+            return (
+              <Produto
+                key={index}
+                dados={{ ...item, foto: fotos[3].download_url }}
+              />
+            );
+          }
+          if (contexto.deveFiltrar === false) {
+            return (
+              <Produto
+                key={index}
+                dados={{ ...item, foto: fotos[3].download_url }}
+              />
+            );
+          }
         }
       });
     }

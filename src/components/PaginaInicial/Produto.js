@@ -17,18 +17,18 @@ function reducer(state, action) {
 }
 
 const Produto = (props) => {
-  const animacaoConfig = {
+  const [{ favoritado, animar }, dispatch] = useReducer(reducer, {
+    favoritado: props.dados.favoritado,
+    animar: [40, 41],
+  });
+
+  var animacaoConfig = {
     animationData: animacao,
     loop: false,
     autoplay: false,
   };
 
-  const { View, playSegments } = useLottie(animacaoConfig);
-
-  const [{ favoritado, animar }, dispatch] = useReducer(reducer, {
-    favoritado: props.dados.favoritado,
-    animar: [40, 41],
-  });
+  var { View, playSegments } = useLottie(animacaoConfig);
 
   const contexto = useContext(ContextoProdutos);
 
@@ -37,122 +37,66 @@ const Produto = (props) => {
   }, [animar]);
 
   useEffect(() => {
-    if(favoritado){
+    if (favoritado) {
       playSegments([109, 109], true);
-    }
-    else{
+    } else {
       playSegments([0, 0], true);
     }
-  }, [])
+  }, []);
 
-  function verificarSeDeveRenderizar() {
-    if (contexto.deveFiltrar && favoritado) {
-      return (
-        <StyledDivProduto url={props.dados.foto}>
-          <StyledDivAnimacao
-            onClick={() => {
-              if (favoritado === true) {
-                contexto.desfavoritar(props.dados.verbo);
-              } else {
-                contexto.favoritar(props.dados.verbo);
-              }
-              dispatch({ type: "favoritar" });
-            }}
-          >
-            {View}
-          </StyledDivAnimacao>
-          <div className="foto"></div>
-          <Titulo
-            style={{
-              textAlign: "center",
-              width: "100%",
-            }}
-          >
-            {props.dados.nome}
-          </Titulo>
-          <Texto>{props.dados.descricao}</Texto>
-          <Texto>
-            R$
-            {props.dados.preco}
-          </Texto>
-          <Botao
-            className="botao__add--carrinho"
-            style={{
-              cursor: "pointer",
-              transition: "0.2s",
-            }}
-            onClick={(e) => {
-              e.preventDefault();
+  return (
+    <StyledDivProduto url={props.dados.foto}>
+      <StyledDivAnimacao
+        onClick={() => {
+          if (favoritado === true) {
+            contexto.desfavoritar(props.dados.verbo);
+          } else {
+            contexto.favoritar(props.dados.verbo);
+          }
+          dispatch({ type: "favoritar" });
+        }}
+      >
+        {View}
+      </StyledDivAnimacao>
+      <div className="foto"></div>
+      <Titulo
+        style={{
+          textAlign: "center",
+          width: "100%",
+        }}
+      >
+        {props.dados.nome}
+      </Titulo>
+      <Texto>{props.dados.descricao}</Texto>
+      <Texto>
+        R$
+        {props.dados.preco}
+      </Texto>
+      {props.carrinho ? (
+        ""
+      ) : (
+        <Botao
+          className="botao__add--carrinho"
+          style={{
+            cursor: "pointer",
+            transition: "0.2s",
+          }}
+          onClick={(e) => {
+            e.preventDefault();
 
-              contexto.colocarCarrinho({
-                id: props.dados.nome,
-                nome: props.dados.nome,
-                descricao: props.dados.descricao,
-                preco: props.dados.preco,
-              });
-            }}
-          >
-            Adicionar ao carrinho
-          </Botao>
-        </StyledDivProduto>
-      );
-    }
-    if (contexto.deveFiltrar && favoritado === false) {
-      return "";
-    } else {
-      return (
-        <StyledDivProduto url={props.dados.foto}>
-          <StyledDivAnimacao
-            onClick={() => {
-              if (favoritado === true) {
-                contexto.desfavoritar(props.dados.verbo);
-              } else {
-                contexto.favoritar(props.dados.verbo);
-              }
-              dispatch({ type: "favoritar" });
-            }}
-          >
-            {View}
-          </StyledDivAnimacao>
-          <div className="foto"></div>
-          <Titulo
-            style={{
-              textAlign: "center",
-              width: "100%",
-            }}
-          >
-            {props.dados.nome}
-          </Titulo>
-          <Texto>{props.dados.descricao}</Texto>
-          <Texto>
-            R$
-            {props.dados.preco}
-          </Texto>
-          <Botao
-            className="botao__add--carrinho"
-            style={{
-              cursor: "pointer",
-              transition: "0.2s",
-            }}
-            onClick={(e) => {
-              e.preventDefault();
-
-              contexto.colocarCarrinho({
-                id: props.dados.nome,
-                nome: props.dados.nome,
-                descricao: props.dados.descricao,
-                preco: props.dados.preco,
-              });
-            }}
-          >
-            Adicionar ao carrinho
-          </Botao>
-        </StyledDivProduto>
-      );
-    }
-  }
-
-  return verificarSeDeveRenderizar();
+            contexto.colocarCarrinho({
+              id: props.dados.nome,
+              nome: props.dados.nome,
+              descricao: props.dados.descricao,
+              preco: props.dados.preco,
+            });
+          }}
+        >
+          Adicionar ao carrinho
+        </Botao>
+      )}
+    </StyledDivProduto>
+  );
 };
 
 const StyledDivAnimacao = styled.div`

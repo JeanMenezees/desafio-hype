@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Container } from "../../styleGlobal";
+import Produto from "../PaginaInicial/Produto";
 
 const Carrinho = (props) => {
   return (
@@ -9,17 +11,7 @@ const Carrinho = (props) => {
             margin: "8px 0"
         }}
       >Seu carrinho Carrinho</h1>
-      {props.produtos.map((produto) => {
-        return (
-            // Produto de carrinho
-            // Nome
-            // Preco
-            // Descricao
-            // Quantidade
-                // Quantidade vem dos items iguais
-                    // Na hora de renderizar ver se ja tem algum com o mesmo id, se sim nao renderiza e conta um no que  ja existe
-        );
-      })}
+      {props.produtos.map((produto) => (<Produto />))}
     </StyledListaCarrinho>
   );
 };
