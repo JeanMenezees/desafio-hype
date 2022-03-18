@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Container } from "../../styleGlobal";
 import Produto from "../../components/Produto";
 import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import ContextoCarrinho from "../../contextos/contextoDeCarrinho";
 
-const Carrinho = (props) => {
+const Carrinho = () => {
+  const { carrinho } = useContext(ContextoCarrinho);
+
   return (
     <>
       <h1
@@ -22,7 +25,7 @@ const Carrinho = (props) => {
         Seu carrinho
       </h1>
       <StyledListaCarrinho>
-        {props.carrinho.map((produto, index) => (
+        {carrinho.map((produto, index) => (
           <Produto key={index} dados={{ ...produto }} carrinho />
         ))}
       </StyledListaCarrinho>

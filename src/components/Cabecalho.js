@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { Container, Titulo } from "../styleGlobal";
 import paleta from "../paleta.json";
 import icone from "../assets/icones/icone-carrinho.svg";
-import ContextoProdutos from "../contextos/contextoProdutos";
+import ContextoCarrinho from "../contextos/contextoDeCarrinho";
 import { Link } from "react-router-dom";
 
 const Cabecalho = () => {
-  const contexto = useContext(ContextoProdutos);
+  const { qtd_items } = useContext(ContextoCarrinho);
 
   return (
     <StyledCabecalho>
@@ -23,7 +23,7 @@ const Cabecalho = () => {
         Acme inc.
       </Titulo>
       <StyledDivCarrinho>
-        <StyledContadorItems>{contexto.qtdItems}</StyledContadorItems>
+        <StyledContadorItems>{qtd_items}</StyledContadorItems>
         <Link to="/carrinho">
           <img
             src={icone}

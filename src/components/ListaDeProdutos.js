@@ -1,20 +1,20 @@
-import React, { useEffect, useState, useReducer, useContext } from "react";
+import React, { useContext } from "react";
 import Produto from "./Produto";
 import styled from "styled-components";
 import { Container } from "../styleGlobal";
 import ContextoProdutos from "../contextos/contextoProdutos";
 
-const ListaProdutos = (props) => {
-  const contexto = useContext(ContextoProdutos);
+const ListaProdutos = () => {
+  const { carregando, nomeProduto , deveFiltrarFav, produtos } = useContext(ContextoProdutos);
 
   function verficarCarregamento() {
-    if (contexto.carregando === true) {
+    if (carregando === true) {
       return "";
     }
-    if (contexto.carregando === false) {
-      return props.produtos.map((item, index) => {
-        if (item.nome.toUpperCase().includes(contexto.nome.toUpperCase())) {
-          if (contexto.deveFiltrar && item.favoritado === true) {
+    if (carregando === false) {
+      return produtos.map((item, index) => {
+        if (item.nome.toUpperCase().includes(nomeProduto.toUpperCase())) {
+          if (deveFiltrarFav && item.favoritado === true) {
             return (
               <Produto
                 key={index}
@@ -22,7 +22,7 @@ const ListaProdutos = (props) => {
               />
             );
           }
-          if (contexto.deveFiltrar === false) {
+          if (deveFiltrarFav === false) {
             return (
               <Produto
                 key={index}

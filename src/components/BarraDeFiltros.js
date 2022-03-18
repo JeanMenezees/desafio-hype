@@ -7,7 +7,7 @@ import Estrela_sem from "../assets/icones/Estrela_sem.svg";
 import Estrela_com from "../assets/icones/Estrela_com.svg";
 
 const BarraFiltros = () => {
-  const contexto = useContext(ContextoProdutos);
+  const { deveFiltrarHandler, setNomeProduto } = useContext(ContextoProdutos);
 
   const [selecionado, setSelecionado] = useState(false);
 
@@ -17,7 +17,7 @@ const BarraFiltros = () => {
         onClick={(e) => {
           e.preventDefault();
 
-          contexto.setFiltrar(true);
+          deveFiltrarHandler(true);
 
           setSelecionado((antigo) => !antigo);
         }}
@@ -40,7 +40,7 @@ const BarraFiltros = () => {
             minWidth: "150px",
           }}
           onChange={(e) => {
-            contexto.setNome(e.target.value);
+            setNomeProduto(e.target.value);
           }}
         />
       </BarraPesquisa>

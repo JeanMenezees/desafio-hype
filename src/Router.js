@@ -1,25 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Inicio from "./pages/Inicio";
 import Carrinho from "./pages/Carrinho";
-import ContextoCarrinho from "./contextos/contextoDeCarrinho";
+import { CarrinhoProvider } from "./contextos/contextoDeCarrinho";
+import { ProdutosProvider } from "./contextos/contextoProdutos";
 
 function Router() {
-  const [carrinho, setCarrinho] = useState([]);
-
   return (
     <BrowserRouter>
-      <ContextoCarrinho.Provider
-        value={{
-          carrinho: carrinho,
-          setCarrinho: setCarrinho
-        }}
-      >
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/carrinho" element={<Carrinho carrinho={carrinho}/>} />
-        </Routes>
-      </ContextoCarrinho.Provider>
+      <CarrinhoProvider>
+        <ProdutosProvider>
+          <Routes>
+            <Route path="/" element={<Inicio />} />
+            <Route path="/carrinho" element={<Carrinho />} />
+          </Routes>
+        </ProdutosProvider>
+      </CarrinhoProvider>
     </BrowserRouter>
   );
 }

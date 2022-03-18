@@ -5,6 +5,7 @@ import { Titulo, Texto, Botao } from "../styleGlobal";
 import animacao from "../assets/Animacoes/FAV.json";
 import { useLottie } from "lottie-react";
 import ContextoProdutos from "../contextos/contextoProdutos";
+import ContextoCarrinho from "../contextos/contextoDeCarrinho";
 
 function reducer(state, action) {
   switch (action.type) {
@@ -28,9 +29,10 @@ const Produto = (props) => {
     autoplay: false,
   };
 
-  var { View, playSegments, destroy } = useLottie(animacaoConfig);
+  var { View, playSegments } = useLottie(animacaoConfig);
 
-  const contexto = useContext(ContextoProdutos);
+  const { favoritar, desfavoritar } = useContext(ContextoProdutos);
+  const { setCarrinho } = useContext(ContextoCarrinho);
 
   useEffect(() => {
     playSegments(animar, true);
@@ -52,9 +54,9 @@ const Produto = (props) => {
         <StyledDivAnimacao
           onClick={() => {
             if (favoritado === true) {
-              contexto.desfavoritar(props.dados.verbo);
+              desfavoritar(props.dados.verbo);
             } else {
-              contexto.favoritar(props.dados.verbo);
+              favoritar(props.dados.verbo);
             }
             dispatch({ type: "favoritar" });
           }}
@@ -88,13 +90,16 @@ const Produto = (props) => {
           onClick={(e) => {
             e.preventDefault();
 
-            contexto.colocarCarrinho({
-              id: props.dados.nome,
-              nome: props.dados.nome,
-              descricao: props.dados.descricao,
-              preco: props.dados.preco,
-              foto: props.dados.foto
-            });
+            setCarrinho((carrinhoAnterior) => [
+              ...carrinhoAnterior,
+              {
+                id: props.dados.nome,
+                nome: props.dados.nome,
+                descricao: props.dados.descricao,
+                preco: props.dados.preco,
+                foto: props.dados.foto,
+              },
+            ]);
           }}
         >
           Adicionar ao carrinho
