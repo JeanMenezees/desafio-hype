@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Container } from "../../styleGlobal";
 import Produto from "../PaginaInicial/Produto";
+import { FiArrowLeft } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Carrinho = (props) => {
   return (
@@ -10,9 +12,13 @@ const Carrinho = (props) => {
         style={{
           padding: "16px",
           fontSize: "2rem",
-          maxWidth: "300px"
+          maxWidth: "300px",
+          alignItems: "center"
         }}
       >
+        <Link to="/">
+          <FiArrowLeft />
+        </Link>
         Seu carrinho
       </h1>
       <StyledListaCarrinho>
