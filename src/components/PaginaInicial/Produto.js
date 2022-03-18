@@ -39,10 +39,8 @@ const Produto = (props) => {
   useEffect(() => {
     if (favoritado) {
       playSegments([40, 109], true);
-      console.log("sou favoritado")
     } else {
       playSegments([40, 41], true);
-      console.log("nao sou favoritado")
     }
   }, []);
 
