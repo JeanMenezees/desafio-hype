@@ -1,5 +1,5 @@
-import shuffle from "./shuffle";
-import regras from "../../regras.json";
+import shuffle from "../commom/utils/shuffle";
+import regras from "../mocks/regras.json";
 
 async function randomificarListaDeNomes() {
   regras.verbos.permitidos = shuffle(regras.verbos.permitidos);

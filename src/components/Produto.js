@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import styled from "styled-components";
-import paleta from "../../paleta.json";
-import { Titulo, Texto, Botao } from "../../styleGlobal";
-import animacao from "../../assets/Animacoes/FAV.json";
+import paleta from "../paleta.json";
+import { Titulo, Texto, Botao } from "../styleGlobal";
+import animacao from "../assets/Animacoes/FAV.json";
 import { useLottie } from "lottie-react";
-import ContextoProdutos from "../../contextos/contextoProdutos";
+import ContextoProdutos from "../contextos/contextoProdutos";
 
 function reducer(state, action) {
   switch (action.type) {

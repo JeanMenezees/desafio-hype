@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Container } from "../../styleGlobal";
-import Produto from "../PaginaInicial/Produto";
+import Produto from "../../components/Produto";
 import { FiArrowLeft } from "react-icons/fi";
 import { Link } from "react-router-dom";
 

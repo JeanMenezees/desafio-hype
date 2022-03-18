@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { Container, Botao, Input } from "../../styleGlobal";
-import paleta from "../../paleta.json";
-import ContextoProdutos from "../../contextos/contextoProdutos";
-import Estrela_sem from "../../assets/icones/Estrela_sem.svg";
-import Estrela_com from "../../assets/icones/Estrela_com.svg";
+import { Container, Botao, Input } from "../styleGlobal";
+import paleta from "../paleta.json";
+import ContextoProdutos from "../contextos/contextoProdutos";
+import Estrela_sem from "../assets/icones/Estrela_sem.svg";
+import Estrela_com from "../assets/icones/Estrela_com.svg";
 
 const BarraFiltros = () => {
   const contexto = useContext(ContextoProdutos);

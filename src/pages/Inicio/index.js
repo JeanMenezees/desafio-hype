@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import Cabecalho from "../Cabecalho";
-import BarraDeFiltro from "../PaginaInicial/BarraDeFiltros";
-import ListaProdutos from "../PaginaInicial/ListaDeProdutos";
+import Cabecalho from "../../components/Cabecalho";
+import BarraDeFiltro from "../../components/BarraDeFiltros";
+import ListaProdutos from "../../components/ListaDeProdutos";
 import ContextoProdutos from "../../contextos/contextoProdutos";
 import ContextoCarrinho from "../../contextos/contextoDeCarrinho";
-import { construirLista } from "../helpers/servicoProdutos";
+import { construirLista } from "../../servicos/servicoProdutos";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);

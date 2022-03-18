@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useReducer, useContext } from "react";
 import Produto from "./Produto";
 import styled from "styled-components";
-import { Container } from "../../styleGlobal";
-import ContextoProdutos from "../../contextos/contextoProdutos";
+import { Container } from "../styleGlobal";
+import ContextoProdutos from "../contextos/contextoProdutos";
 
 const ListaProdutos = (props) => {
   const contexto = useContext(ContextoProdutos);

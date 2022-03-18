@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Inicio from "./components/PaginaInicial/Inicio";
-import Carrinho from "./components/Carrinho/carrinho";
+import Inicio from "./pages/Inicio";
+import Carrinho from "./pages/Carrinho";
 import ContextoCarrinho from "./contextos/contextoDeCarrinho";
 
 function App() {
