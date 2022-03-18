@@ -4,7 +4,7 @@ import BarraDeFiltro from "../../components/BarraDeFiltros";
 import ListaProdutos from "../../components/ListaDeProdutos";
 import ContextoProdutos from "../../contextos/contextoProdutos";
 import ContextoCarrinho from "../../contextos/contextoDeCarrinho";
-import { construirLista } from "../../servicos/servicoProdutos";
+import { UseConstruirLista } from "../../hooks/servicoProdutos";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);
@@ -20,7 +20,7 @@ function App() {
   }, [carrinho]);
 
   useEffect(() => {
-    construirLista()
+    UseConstruirLista()
       .then((produtos) => {
         setProdutos(produtos);
       })

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Inicio from "./pages/Inicio";
 import Carrinho from "./pages/Carrinho";
 import ContextoCarrinho from "./contextos/contextoDeCarrinho";
 
-function App() {
+function Router() {
   const [carrinho, setCarrinho] = useState([]);
 
   return (
-    <Router>
+    <BrowserRouter>
       <ContextoCarrinho.Provider
         value={{
           carrinho: carrinho,
@@ -20,8 +20,8 @@ function App() {
           <Route path="/carrinho" element={<Carrinho carrinho={carrinho}/>} />
         </Routes>
       </ContextoCarrinho.Provider>
-    </Router>
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default Router;

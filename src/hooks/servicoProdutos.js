@@ -1,22 +1,12 @@
-import shuffle from "../commom/utils/shuffle";
-import regras from "../mocks/regras.json";
+import { calcular_preco } from "../commom/utils/calculaPrecoProduto";
+import { randomificarListaDeNomes } from "../commom/utils/randomificarLista";
 
-async function randomificarListaDeNomes() {
-  regras.verbos.permitidos = shuffle(regras.verbos.permitidos);
-  regras.adjetivos.permitidos = shuffle(regras.adjetivos.permitidos);
-}
-
-function calcular_preco(nameLength, descrLength) {
-  return 10 + nameLength * ((500 - descrLength) / (3 - nameLength));
-}
-
-export async function construirLista() {
-  randomificarListaDeNomes();
-
+export async function UseConstruirLista() {
   return fetch("https://picsum.photos/v2/list?page=2&limit=50")
     .then(async (resposta) => {
       var fotos = await resposta.json();
       var listaCompleta = [];
+      const regras = await randomificarListaDeNomes();
 
       for (var i = 0; i < regras.verbos.permitidos.length; i++) {
         listaCompleta.push({
