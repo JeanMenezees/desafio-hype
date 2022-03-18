@@ -94,7 +94,21 @@ const StyledBotaoFavoritos = styled(Botao)`
   .icone__sem__fundo{
     position: absolute;
 
+    animation: ${props => props.selecionado ? `girarEstrela 2s forwards` : ""};
+
     left: 2%;
+  }
+
+  @keyframes girarEstrela {
+    0%{
+      transform: rotate(0deg);
+    }
+    50%{
+      transform: rotate(360deg);
+    }
+    100%{
+      transform: rotate(0);
+    }
   }
 `;
 
