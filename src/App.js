@@ -4,7 +4,6 @@ import BarraDeFiltro from "./components/PaginaInicial/BarraDeFiltros";
 import ListaProdutos from "./components/PaginaInicial/ListaDeProdutos";
 import ContextoProdutos from "../src/contextos/contextoProdutos.js";
 import { construirLista } from "./components/helpers/random";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);

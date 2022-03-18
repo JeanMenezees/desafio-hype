@@ -80,16 +80,17 @@ const StyledListaProdutos = styled(Container)`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  @media(min-width: 1000px){
+    width: 90%;
+    margin: 32px auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 16px;
+    grid-column-gap: 16px;
+  }
 `;
-
-// Estilo para PC
-// width: 90%;
-// margin: 32px auto;
-
-// display: grid;
-
-// grid-template-columns: 1fr 1fr 1fr;
-// grid-row-gap: 16px;
-// grid-column-gap: 16px;
 
 export default ListaProdutos;
