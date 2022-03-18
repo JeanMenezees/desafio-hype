@@ -46,18 +46,22 @@ const Produto = (props) => {
 
   return (
     <StyledDivProduto url={props.dados.foto}>
-      <StyledDivAnimacao
-        onClick={() => {
-          if (favoritado === true) {
-            contexto.desfavoritar(props.dados.verbo);
-          } else {
-            contexto.favoritar(props.dados.verbo);
-          }
-          dispatch({ type: "favoritar" });
-        }}
-      >
-        {View}
-      </StyledDivAnimacao>
+      {props.carrinho ? (
+        ""
+      ) : (
+        <StyledDivAnimacao
+          onClick={() => {
+            if (favoritado === true) {
+              contexto.desfavoritar(props.dados.verbo);
+            } else {
+              contexto.favoritar(props.dados.verbo);
+            }
+            dispatch({ type: "favoritar" });
+          }}
+        >
+          {View}
+        </StyledDivAnimacao>
+      )}
       <div className="foto"></div>
       <Titulo
         style={{
@@ -134,6 +138,8 @@ const StyledDivProduto = styled.div`
   transition: 1s;
 
   border-radius: 16px;
+
+  max-height: 350px;
 
   .foto{
     width: 200px;

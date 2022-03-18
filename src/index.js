@@ -7,12 +7,7 @@ import Carrinho from './components/Carrinho/carrinho';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={<App />}/>
-        <Route path="/carrinho" element={<Carrinho />}/>
-      </Routes>
-    </Router>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
