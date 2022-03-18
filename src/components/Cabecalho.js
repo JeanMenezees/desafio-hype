@@ -49,6 +49,8 @@ const StyledCabecalho = styled(Container)`
 
   background-color: ${paleta.cores.branco};
 
+  height: 200px;
+
   position: sticky;
   top: 0;
 

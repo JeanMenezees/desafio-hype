@@ -42,6 +42,13 @@ const StyledBarraFiltros = styled(Container)`
   justify-content: space-between;
 
   border-radius: 8px;
+
+  position: sticky;
+  top: 200px;
+
+  background-color: ${paleta.cores.branco};
+
+  z-index: 999;
 `;
 
 const StyledBotaoFavoritos = styled(Botao)`

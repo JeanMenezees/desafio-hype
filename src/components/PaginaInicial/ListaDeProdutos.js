@@ -2,20 +2,19 @@ import React, { useEffect, useState, useReducer, useContext } from "react";
 import Produto from "./Produto";
 import styled from "styled-components";
 import { Container } from "../../styleGlobal";
-import { construirLista } from "../helpers/random.js";
-import regras from "../../regras.json";
 import ContextoProdutos from "../../contextos/contextoProdutos";
+import { v4 as uuidv4 } from "uuid";
 
 function reducer(state, action) {
   switch (action.type) {
     case "construir":
-      return { listaNomes: construirLista(regras), carregando: false };
+      return { carregando: false };
   }
 }
 
 const ListaProdutos = (props) => {
-  const [{ listaNomes, carregando }, dispatch] = useReducer(reducer, {
-    listaNomes: [],
+  //Vou receber os produtos
+  const [{ carregando }, dispatch] = useReducer(reducer, {
     carregando: true,
   });
 
@@ -29,23 +28,14 @@ const ListaProdutos = (props) => {
       return "";
     }
     if (carregamento === false && carregamentoFoto === false) {
-      return listaNomes.map((nome) => {
-        if (
-          nome.verbo.toUpperCase().includes(contexto.nome.toUpperCase()) ||
-          nome.verbo.toUpperCase() === contexto.nome.toUpperCase() ||
-          nome.adjetivo.toUpperCase().includes(contexto.nome.toUpperCase()) ||
-          nome.adjetivo.toUpperCase() === contexto.nome.toUpperCase()
-        ) {
-          {
-            return (
-              <Produto
-                key={nome.verbo}
-                verbo={nome.verbo}
-                adjetivo={nome.adjetivo}
-                url={fotos[0]}
-              />
-            );
-          }
+      return props.produtos.map((item, index) => {
+        if (item.nome.toUpperCase().includes(contexto.nome.toUpperCase())) {
+          return (
+            <Produto
+              key={index}
+              dados={{ ...item, foto: fotos[3].download_url }}
+            />
+          );
         }
       });
     }
