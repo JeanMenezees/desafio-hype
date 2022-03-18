@@ -4,7 +4,7 @@ import BarraDeFiltro from "../PaginaInicial/BarraDeFiltros";
 import ListaProdutos from "../PaginaInicial/ListaDeProdutos";
 import ContextoProdutos from "../../contextos/contextoProdutos";
 import ContextoCarrinho from "../../contextos/contextoDeCarrinho";
-import { construirLista } from "../helpers/random";
+import { construirLista } from "../helpers/servicoProdutos";
 
 function App() {
   const [carrinho, setCarrinho] = useState([]);

@@ -1,4 +1,4 @@
-import shuffle from "../helpers/shuffle";
+import shuffle from "./shuffle";
 import regras from "../../regras.json";
 
 async function randomificarListaDeNomes() {
