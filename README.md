@@ -16,12 +16,15 @@ Desafio proposto pela Hype 🏢 para simular um web app de um e-commerce para no
 
 ![fluxo1](./public/screenshots/Fluxo1.png)
 ![fluxo3](./public/screenshots/Fluxo3.png)
+
 É possível favoritar e filtrar seus favoritos
 
 ![fluxo2](./public/screenshots/Fluxo2.png)
+
 É possível filtrar pelo nome do produto, inclusive com o filtro de favoritos
 
 ![fluxo4](./public/screenshots/Fluxo4.png)
+
 Ao final, você tem seu carrinho, que pode ser tanto adicionado em seu localstorage, quanto excluido de lá 🥇
 
 ## Do que você vai precisar
