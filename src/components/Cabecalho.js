@@ -11,17 +11,16 @@ const Cabecalho = () => {
 
   return (
     <StyledCabecalho>
-      <Titulo
-        style={{
-          color: `${paleta.cores.vermelho}`,
-          textDecoration: "none",
-        }}
-        onClick={() => {
-          window.location.reload();
-        }}
-      >
-        Acme inc.
-      </Titulo>
+      <Link to="/">
+        <Titulo
+          style={{
+            color: `${paleta.cores.vermelho}`,
+            textDecoration: "none",
+          }}
+        >
+          Acme inc.
+        </Titulo>
+      </Link>
       <StyledDivCarrinho>
         <StyledContadorItems>{qtd_items}</StyledContadorItems>
         <Link to="/carrinho">
@@ -56,7 +55,7 @@ const StyledCabecalho = styled(Container)`
 
   z-index: 1;
 
-  @media(min-width: 1000px){
+  @media (min-width: 1000px) {
     height: 100px;
 
     padding: 2%;
