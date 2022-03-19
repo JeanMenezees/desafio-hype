@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Container, Botao, Input } from "../styleGlobal";
 import paleta from "../paleta.json";
@@ -7,9 +7,7 @@ import Estrela_sem from "../assets/icones/Estrela_sem.svg";
 import Estrela_com from "../assets/icones/Estrela_com.svg";
 
 const BarraFiltros = () => {
-  const { deveFiltrarHandler, setNomeProduto } = useContext(ContextoProdutos);
-
-  const [selecionado, setSelecionado] = useState(false);
+  const { deveFiltrarFav, deveFiltrarHandler, setNomeProduto, nomeProduto } = useContext(ContextoProdutos);
 
   return (
     <StyledBarraFiltros>
@@ -18,20 +16,19 @@ const BarraFiltros = () => {
           e.preventDefault();
 
           deveFiltrarHandler(true);
-
-          setSelecionado((antigo) => !antigo);
         }}
-        selecionado={selecionado}
+        selecionado={deveFiltrarFav}
       >
         <img
           className="icone__sem__fundo"
-          src={selecionado ? Estrela_com : Estrela_sem}
+          src={deveFiltrarFav ? Estrela_com : Estrela_sem}
           alt="icone de estrela"
         />
         Favoritos
       </StyledBotaoFavoritos>
       <BarraPesquisa>
         <Input
+          value={nomeProduto}
           type="text"
           placeholder="O que você procura?"
           style={{
