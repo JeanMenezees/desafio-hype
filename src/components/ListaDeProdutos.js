@@ -55,9 +55,6 @@ const StyledListaProdutos = styled(Container)`
   position: relative;
 
   @media (min-width: 1000px) {
-    width: 90%;
-    margin: 32px auto;
-
     display: grid;
 
     grid-template-columns: 1fr 1fr 1fr;
