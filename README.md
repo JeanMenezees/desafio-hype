@@ -25,9 +25,20 @@ Desafio proposto pela Hype 🏢 para simular um web app de um e-commerce para no
 
 É possível filtrar pelo nome do produto, inclusive com o filtro de favoritos
 
+![fluxo5](./public/screenshots/Fluxo5.png)
+
+Também é possível abrir os detalhes do produto, basta clicar na imagem do produto que quer ver
+Para fechar o detalhe do seu produto, clique em fechar.
+
 ![fluxo4](./public/screenshots/Fluxo4.png)
 
 Ao final, você tem seu carrinho, que pode ser tanto adicionado em seu localstorage, quanto excluido de lá 🥇
+
+![fluxo6](./public/screenshots/Fluxo6.png)
+
+Na página de carrinho, você pode realizar o checkout dele, em checkout do carrinho, pelo console do navegador `shift F12` é possível ver os dados do carrinho que foi dado o checkout
+
+![resultado](./public/screenshots/Resultado.png)
 
 ## Do que você vai precisar
 
