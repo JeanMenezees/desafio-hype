@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Container } from "../styleGlobal";
 import ContextoProdutos from "../contextos/contextoProdutos";
 import sem_favoritos from "../assets/icones/sem_favoritos.png";
+import Faker from "faker-br";
 
 const ListaProdutos = () => {
   const { carregando, nomeProduto, deveFiltrarFav, produtos } =
@@ -32,10 +33,10 @@ const ListaProdutos = () => {
         return produtos.map((item, index) => {
           if (item.nome.toUpperCase().includes(nomeProduto.toUpperCase())) {
             if (deveFiltrarFav && item.favoritado === true) {
-              return <Produto key={index} dados={{ ...item }} />;
+              return <Produto key={Faker.random.uuid()} dados={{ ...item }} />;
             }
             if (deveFiltrarFav === false) {
-              return <Produto key={index} dados={{ ...item }} />;
+              return <Produto key={Faker.random.uuid()} dados={{ ...item }} />;
             }
           }
         });
