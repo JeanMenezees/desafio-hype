@@ -31,7 +31,7 @@ const StyledModalBackgound = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  backdrop-filter: blur(1px) opacity(0.7);
+  backdrop-filter: blur(1px);
 
   width: 100vw;
   height: 100vh;
