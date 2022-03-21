@@ -58,7 +58,7 @@ const StyledBarraFiltros = styled(Container)`
 
   background-color: ${paleta.cores.branco};
 
-  z-index: 999;
+  z-index: 800;
 
   @media (min-width: 1000px) {
     top: calc(100px + 2%);

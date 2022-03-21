@@ -31,7 +31,8 @@ const Produto = (props) => {
 
   var { View, playSegments } = useLottie(animacaoConfig);
 
-  const { favoritar, desfavoritar } = useContext(ContextoProdutos);
+  const { favoritar, desfavoritar, setProdutoSelecionado, setAparecerModal } =
+    useContext(ContextoProdutos);
   const { setCarrinho } = useContext(ContextoCarrinho);
 
   useEffect(() => {
@@ -64,7 +65,16 @@ const Produto = (props) => {
           {View}
         </StyledDivAnimacao>
       )}
-      <div className="foto"></div>
+      <div
+        className="foto"
+        onClick={() => {
+          if(props.carrinho){
+            return
+          }
+          setProdutoSelecionado(props.dados);
+          setAparecerModal(true);
+        }}
+      ></div>
       <Titulo
         style={{
           textAlign: "center",
@@ -145,21 +155,25 @@ const StyledDivProduto = styled.div`
 
   max-height: 400px;
 
-  .foto{
+  .foto {
     width: 100%;
     height: 200px;
 
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    
-   background-image: url(${(props) => props.url});
-   backgroundSize: "cover",
-   backgroundRepeat: "no-repeat",
-   backgroundPosition: "center center",
+
+    background-image: url(${(props) => props.url});
+    backgroundsize: "cover";
+    backgroundrepeat: "no-repeat";
+    backgroundposition: "center center";
+
+    transition: 0.4s;
+
+    cursor: pointer;
   }
 
-  .botao__add--carrinho:hover{
-    border-bottom: 3px solid ${paleta.cores.preto}
+  .botao__add--carrinho:hover {
+    border-bottom: 3px solid ${paleta.cores.preto};
   }
 `;
 

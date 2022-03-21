@@ -7,6 +7,8 @@ export const ProdutosProvider = ({ children }) => {
   const [deveFiltrarFav, setDeveFiltrarFav] = useState(false);
   const [nomeProduto, setNomeProduto] = useState("");
   const [produtos, setProdutos] = useState([]);
+  const [produtoSelecionado, setProdutoSelecionado] = useState({});
+  const [aparecerModal, setAparecerModal] = useState(false);
 
   function deveFiltrarHandler() {
     if (deveFiltrarFav === true) {
@@ -55,12 +57,16 @@ export const ProdutosProvider = ({ children }) => {
         nomeProduto,
         produtos,
         carregando,
+        produtoSelecionado,
+        setProdutoSelecionado,
         setCarregando,
         setProdutos,
         setNomeProduto,
         deveFiltrarHandler,
         favoritar,
-        desfavoritar
+        desfavoritar,
+        aparecerModal,
+        setAparecerModal
       }}
     >
       {children}
